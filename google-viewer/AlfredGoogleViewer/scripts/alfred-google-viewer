@@ -5,7 +5,7 @@ import json
 import os
 import subprocess
 import sys
-import urllib
+import urllib.parse
 import uuid
 
 
@@ -30,10 +30,10 @@ if __name__ == '__main__':
   bkgColorWithoutAlpha = bkgColor[:-2]
 
   # https://stackoverflow.com/a/50466440
-  urllib.quote_plus = urllib.quote
+  urllib.parse.quote_plus = urllib.parse.quote
   subprocess.call([
     'open', '-g',
-    'alfred-google-viewer://update?%s' % urllib.urlencode({
+    'alfred-google-viewer://update?%s' % urllib.parse.urlencode({
       'rawQuery': rawQuery,
       'cssFile': cssfilepath,
       'bkgColor': bkgColorWithoutAlpha
