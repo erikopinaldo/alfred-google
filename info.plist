@@ -93,7 +93,7 @@
 				<string></string>
 				<key>script</key>
 				<string>function urlquote() {
-  python2 -c "import urllib; import sys; sys.stdout.write(urllib.quote(sys.argv[-1]))" "$1"
+  python3 -c "import urllib.parse; import sys; sys.stdout.write(urllib.parse.quote(sys.argv[-1]))" "$1"
 }
 
 quoted=$(urlquote "$1")
