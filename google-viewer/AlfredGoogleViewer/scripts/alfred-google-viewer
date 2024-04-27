@@ -44,7 +44,7 @@ if __name__ == '__main__':
 try:
   # https://stackoverflow.com/a/50466440
   urllib.parse.quote_plus = urllib.parse.quote
-  output = subprocess.call([
+  subprocess.call([
     'open', '-g',
     'alfred-google-viewer://update?%s' % urllib.parse.urlencode({
       'rawQuery': rawQuery,
