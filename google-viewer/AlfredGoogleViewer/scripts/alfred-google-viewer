@@ -41,6 +41,7 @@ if __name__ == '__main__':
   bkgColor = alfred.theme()['window.color']
   bkgColorWithoutAlpha = bkgColor[:-2]
 
+try:
   # https://stackoverflow.com/a/50466440
   urllib.parse.quote_plus = urllib.parse.quote
   subprocess.call([
@@ -51,6 +52,8 @@ if __name__ == '__main__':
       'bkgColor': bkgColorWithoutAlpha
     })
   ])
+except Exception as e:
+  logger.error(e)
 
   print(json.dumps(alfreditems, indent=2))
   sys.stdout.flush()
