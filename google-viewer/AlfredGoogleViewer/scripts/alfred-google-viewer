@@ -44,7 +44,7 @@ if __name__ == '__main__':
 try:
   # https://stackoverflow.com/a/50466440
   urllib.parse.quote_plus = urllib.parse.quote
-  subprocess.call([
+  output = subprocess.call([
     'open', '-g',
     'alfred-google-viewer://update?%s' % urllib.parse.urlencode({
       'rawQuery': rawQuery,
@@ -52,8 +52,10 @@ try:
       'bkgColor': bkgColorWithoutAlpha
     })
   ])
-except Exception as e:
-  logger.error(e)
+except subprocess.CalledProcessError as exc:
+    print("Status : FAIL", exc.returncode, exc.output)
+else:
+    print("Output: \n{}\n".format(output))
 
 print(json.dumps(alfreditems, indent=2))
 sys.stdout.flush()
