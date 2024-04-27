@@ -92,7 +92,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   func searchGoogle(_ query: String) {
     self.webview.evaluateJavaScript(
       """
-      document.querySelector("input[name='q']").value = "\(query)";
+      document.querySelector("textarea[name='q']").value = "\(query)";
       document.querySelector('form').submit();
       """,
       completionHandler: { (out, err) in
