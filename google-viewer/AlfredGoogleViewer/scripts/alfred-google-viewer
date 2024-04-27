@@ -55,7 +55,10 @@ try:
 except subprocess.CalledProcessError as exc:
     print(json.dumps(("Status : FAIL", exc.returncode, exc.output), indent=2))
 else:
-    print(json.dumps(("Output: \n{}\n".format(output)), indent=2))
+  json_data = {
+      alfreditems,
+      output,
+  }
 
-print(json.dumps(alfreditems, indent=2))
-sys.stdout.flush()
+  print(json.dumps(json_data, indent=2))
+  sys.stdout.flush()
